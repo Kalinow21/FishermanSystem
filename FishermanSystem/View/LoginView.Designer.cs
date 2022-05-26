@@ -34,7 +34,7 @@
             this.Passwordtxt = new System.Windows.Forms.TextBox();
             this.Passwordlbl = new System.Windows.Forms.Label();
             this.Loginbtn = new System.Windows.Forms.Button();
-            this.Registerbtn = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.FSlbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -100,15 +100,16 @@
             this.Loginbtn.Text = "Login";
             this.Loginbtn.UseVisualStyleBackColor = true;
             // 
-            // Registerbtn
+            // btnRegister
             // 
-            this.Registerbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Registerbtn.Location = new System.Drawing.Point(404, 248);
-            this.Registerbtn.Name = "Registerbtn";
-            this.Registerbtn.Size = new System.Drawing.Size(91, 32);
-            this.Registerbtn.TabIndex = 6;
-            this.Registerbtn.Text = "Register";
-            this.Registerbtn.UseVisualStyleBackColor = true;
+            this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.Location = new System.Drawing.Point(404, 248);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(91, 32);
+            this.btnRegister.TabIndex = 6;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // FSlbl
             // 
@@ -130,7 +131,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(789, 418);
             this.Controls.Add(this.FSlbl);
-            this.Controls.Add(this.Registerbtn);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.Loginbtn);
             this.Controls.Add(this.Passwordlbl);
             this.Controls.Add(this.Passwordtxt);
@@ -152,7 +153,7 @@
         private System.Windows.Forms.TextBox Passwordtxt;
         private System.Windows.Forms.Label Passwordlbl;
         private System.Windows.Forms.Button Loginbtn;
-        private System.Windows.Forms.Button Registerbtn;
+        private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label FSlbl;
     }
 }
