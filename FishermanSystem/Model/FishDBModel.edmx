@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FishDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Catch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CatchAmount" Type="float" Nullable="false" />
+          <Property Name="Duration" Type="float" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="ShipId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FishDB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ship">
+          <Key>
+            <PropertyRef Name="ShipId" />
+          </Key>
+          <Property Name="ShipId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LicenseEndDate" Type="datetime" Nullable="false" />
+          <Property Name="IsCasual" Type="bit" Nullable="false" />
+          <Property Name="FueIUsedPerHour" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Catch__ShipId__49C3F6B7">
+          <End Role="Ship" Type="Self.Ship" Multiplicity="1" />
+          <End Role="Catch" Type="Self.Catch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ship">
+              <PropertyRef Name="ShipId" />
+            </Principal>
+            <Dependent Role="Catch">
+              <PropertyRef Name="ShipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FishDBModelStoreContainer">
+          <EntitySet Name="Catch" EntityType="Self.Catch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FishDB" EntityType="Self.FishDB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ship" EntityType="Self.Ship" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Catch__ShipId__49C3F6B7" Association="Self.FK__Catch__ShipId__49C3F6B7">
+            <End Role="Ship" EntitySet="Ship" />
+            <End Role="Catch" EntitySet="Catch" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FishDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Catch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CatchAmount" Type="Double" Nullable="false" />
+          <Property Name="Duration" Type="Double" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShipId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ship" Relationship="Self.FK__Catch__ShipId__49C3F6B7" FromRole="Catch" ToRole="Ship" />
+        </EntityType>
+        <EntityType Name="FishDB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ship">
+          <Key>
+            <PropertyRef Name="ShipId" />
+          </Key>
+          <Property Name="ShipId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LicenseEndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCasual" Type="Boolean" Nullable="false" />
+          <Property Name="FueIUsedPerHour" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Catches" Relationship="Self.FK__Catch__ShipId__49C3F6B7" FromRole="Ship" ToRole="Catch" />
+        </EntityType>
+        <Association Name="FK__Catch__ShipId__49C3F6B7">
+          <End Role="Ship" Type="Self.Ship" Multiplicity="1" />
+          <End Role="Catch" Type="Self.Catch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ship">
+              <PropertyRef Name="ShipId" />
+            </Principal>
+            <Dependent Role="Catch">
+              <PropertyRef Name="ShipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FishDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Catches" EntityType="Self.Catch" />
+          <EntitySet Name="FishDBs" EntityType="Self.FishDB" />
+          <EntitySet Name="Ships" EntityType="Self.Ship" />
+          <AssociationSet Name="FK__Catch__ShipId__49C3F6B7" Association="Self.FK__Catch__ShipId__49C3F6B7">
+            <End Role="Ship" EntitySet="Ships" />
+            <End Role="Catch" EntitySet="Catches" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FishDBModelStoreContainer" CdmEntityContainer="FishDBEntities">
+          <EntitySetMapping Name="Catches">
+            <EntityTypeMapping TypeName="FishDBModel.Catch">
+              <MappingFragment StoreEntitySet="Catch">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CatchAmount" ColumnName="CatchAmount" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="ShipId" ColumnName="ShipId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FishDBs">
+            <EntityTypeMapping TypeName="FishDBModel.FishDB">
+              <MappingFragment StoreEntitySet="FishDB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ships">
+            <EntityTypeMapping TypeName="FishDBModel.Ship">
+              <MappingFragment StoreEntitySet="Ship">
+                <ScalarProperty Name="ShipId" ColumnName="ShipId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LicenseEndDate" ColumnName="LicenseEndDate" />
+                <ScalarProperty Name="IsCasual" ColumnName="IsCasual" />
+                <ScalarProperty Name="FueIUsedPerHour" ColumnName="FueIUsedPerHour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
