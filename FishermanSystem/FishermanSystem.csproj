@@ -72,6 +72,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\RegisterController.cs" />
     <Compile Include="Model\Catch.cs">
       <DependentUpon>FishDBModel.tt</DependentUpon>
     </Compile>
@@ -138,9 +140,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="FishDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

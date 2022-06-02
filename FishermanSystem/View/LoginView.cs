@@ -19,7 +19,7 @@ namespace FishermanSystem.View
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-           
+
         }
     }
 }
