@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace FishermanSystem.View
 {
-    public partial class LoginView : Form
+    public partial class RegisterView : Form
     {
-        public LoginView()
+        public RegisterView()
         {
             InitializeComponent();
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            RegisterView registerView = new RegisterView();
-            this.Hide();
-            registerView.Show();
         }
     }
 }
