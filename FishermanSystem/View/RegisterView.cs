@@ -16,5 +16,21 @@ namespace FishermanSystem.View
         {
             InitializeComponent();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Usernametxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+              
+            
+        }
     }
 }

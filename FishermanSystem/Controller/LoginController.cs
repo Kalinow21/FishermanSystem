@@ -8,6 +8,6 @@ namespace FishermanSystem.Controller
 {
     public class LoginController
     {
-
+     
     }
 }
